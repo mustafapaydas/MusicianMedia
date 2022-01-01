@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Core.DataAccess.Abstracts;
 using Core.DataAccess.Concretes;
 using Core.Entities.Concretes;
 using DataAccess.Abstracts;
-using DataAccess.Concretes.EntityFramework;
 
-namespace DataAccess.Concretes
+namespace DataAccess.Concretes.EntityFramework
 {
     public class EfUserDal : EfEntityRepositoryBase<User, MusicContext>, IUserDal
     {

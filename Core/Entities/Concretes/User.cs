@@ -12,6 +12,7 @@ namespace Core.Entities.Concretes
         public string UserLastName { get; set; }
         public string Email { get; set; }
         public bool Status { get; set; }
+        public int ImageId { get; set; }
         public byte[] PasswordSalt { get; set; }
         public byte[] PasswordHash{ get; set; }
     }

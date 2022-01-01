@@ -7,6 +7,7 @@ using Business.Concretes;
 using Core.Utilities.Security.Jwt;
 using DataAccess.Abstracts;
 using DataAccess.Concretes;
+using DataAccess.Concretes.EntityFramework;
 
 namespace Business.DependencyResolvers.Autofac
 {
