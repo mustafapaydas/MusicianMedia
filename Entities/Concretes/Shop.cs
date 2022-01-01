@@ -2,7 +2,7 @@
 
 namespace Entities.Concretes
 {
-    public interface Shop:IEntity
+    public class Shop:IEntity
     {
         public int ShopId { get; set; }
         public int UserId { get; set; }
