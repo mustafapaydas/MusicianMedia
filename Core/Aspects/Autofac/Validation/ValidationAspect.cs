@@ -6,6 +6,7 @@ using System.Text;
 using Castle.DynamicProxy;
 using Core.CrossCoutingConcerns.Validation.FluentValidation;
 using Core.Utilities.Interceptors;
+using Core.Utilities.Messages;
 using FluentValidation;
 
 namespace Core.Aspects.Autofac.Validation
@@ -17,7 +18,7 @@ namespace Core.Aspects.Autofac.Validation
         {
             if (!typeof(IValidator).IsAssignableFrom(validatorType))
             {
-                throw new System.Exception("Bu Bir Doğrulama Sınıfı Değil");
+                throw new System.Exception(AspectMessages.WrongValidationType);
             }
 
             _validatorType = validatorType;

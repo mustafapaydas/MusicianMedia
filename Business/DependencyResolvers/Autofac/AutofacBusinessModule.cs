@@ -18,17 +18,17 @@ namespace Business.DependencyResolvers.Autofac
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<MusicianManager>().As<IMusicianService>();
-            builder.RegisterType<EfMusicianDal>().As<IMusicianDal>();
+            builder.RegisterType<MusicianManager>().As<IMusicianService>().SingleInstance();
+            builder.RegisterType<EfMusicianDal>().As<IMusicianDal>().SingleInstance();
 
-            builder.RegisterType<GroupManager>().As<IGroupService>();
-            builder.RegisterType<EfGroupDal>().As<IGroupDal>();
+            builder.RegisterType<GroupManager>().As<IGroupService>().SingleInstance();
+            builder.RegisterType<EfGroupDal>().As<IGroupDal>().SingleInstance();
 
-            builder.RegisterType<SongManager>().As<ISongService>();
-            builder.RegisterType<EfSongDal>().As<ISongDal>();
+            builder.RegisterType<SongManager>().As<ISongService>().SingleInstance();
+            builder.RegisterType<EfSongDal>().As<ISongDal>().SingleInstance();
             
-            builder.RegisterType<InstrumentManager>().As<IInstrumentService>();
-            builder.RegisterType<EfInstrumentDal>().As<IInstrumentDal>();
+            builder.RegisterType<InstrumentManager>().As<IInstrumentService>().SingleInstance();
+            builder.RegisterType<EfInstrumentDal>().As<IInstrumentDal>().SingleInstance();
 
             builder.RegisterType<UserManager>().As<IUserService>();
             builder.RegisterType<EfUserDal>().As<IUserDal>();
