@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using Business.Abstracts;
 using Business.Constants;
-
-
 using Core.Entities.Concretes;
 using Core.Utilities.Results.Abstracts;
 using Core.Utilities.Results.Concretes.Success;

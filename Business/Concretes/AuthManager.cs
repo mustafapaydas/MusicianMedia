@@ -4,6 +4,7 @@ using System.Text;
 using Business.Abstracts;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Entities.Concretes;
 using Core.Utilities.Hashing;
 using Core.Utilities.Results.Abstracts;
@@ -23,7 +24,7 @@ namespace Business.Concretes
             _userService = userService;
             _tokenHelper= tokenHelper;
         }
-       // [ValidationAspect(typeof(UserValidation))]
+       [ValidationAspect(typeof(UserValidation))]
         public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password)
         {
             byte[] passwordSalt, passwordHash;

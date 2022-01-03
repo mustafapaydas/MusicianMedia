@@ -8,14 +8,13 @@ namespace Core.CrossCoutingConcerns.Validation.FluentValidation
 {
     public static class ValidationTool
     {
-        public static void Validate(IValidator validator,Object entity)
+        public static void Validate(IValidator validator, object entity)
         {
-            var context = new ValidationContext<Object>(entity);
+            var context = new ValidationContext<object>(entity);
             var result = validator.Validate(context);
-            
             if (!result.IsValid)
             {
-                throw new ValidationException(result.Errors.ToString());
+                throw new ValidationException(result.Errors);
             }
         }
     }
