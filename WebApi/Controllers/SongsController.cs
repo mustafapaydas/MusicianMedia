@@ -20,7 +20,7 @@ namespace WebApi.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _songService.GetAll();
+            var result = _songService.AllOfDetail();
             if (result.Success)
             {
                 return Ok(result);

@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using Business.Abstracts;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results.Abstracts;
 using Core.Utilities.Results.Concretes.Success;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using Entities.Dtos;
 
 namespace Business.Concretes
 {
@@ -23,7 +26,7 @@ namespace Business.Concretes
         {
             return new SuccessDataResult<List<Song>>(_songDal.GetAll());
         }
-
+        [ValidationAspect(typeof(SongValidator))]
         public IResult Add(Song song)
         {
             _songDal.Add(song);
@@ -45,6 +48,11 @@ namespace Business.Concretes
         public IDataResult<Song> GetById(int songId)
         {
             return new SuccessDataResult<Song>(_songDal.Get(song => song.SongId == songId));
+        }
+
+        public IDataResult<List<SongDetailDto>> AllOfDetail()
+        {
+            return new SuccessDataResult<List<SongDetailDto>>(_songDal.GetSongDetails());
         }
     }
 }
