@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Business.Constants;
 using Entities.Concretes;
 using FluentValidation;
 
@@ -10,7 +11,8 @@ namespace Business.ValidationRules.FluentValidation
     {
         public InstrumentValidator()
         {
-            RuleFor(instrument => instrument.InstrumentName).MinimumLength(7).WithMessage("Hatalısın");
+            RuleFor(instrument => instrument.InstrumentName).NotEmpty().WithMessage(Messages.MissingCharacter);
+            RuleFor(instrumet => instrumet.InstrumentDescription).NotEmpty();
         }
     }
 }
