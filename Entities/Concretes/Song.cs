@@ -11,7 +11,7 @@ namespace Entities.Concretes
         public string SongName { get; set; }
         public int KindId { get; set; }
         public string Lyrics { get; set; }
-        public string OfSinger { get; set; }
+        public int SingerId { get; set; }
        
     }
 }

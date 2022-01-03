@@ -11,6 +11,6 @@ namespace Entities.Dtos
         public string SongName { get; set; }
         public string KindName { get; set; }
         public string Lyrics { get; set; }
-        public string OfSinger { get; set; }
+        public string SingerName { get; set; }
     }
 }

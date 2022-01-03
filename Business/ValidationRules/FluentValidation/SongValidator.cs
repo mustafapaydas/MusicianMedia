@@ -11,8 +11,7 @@ namespace Business.ValidationRules.FluentValidation
     {
         public SongValidator()
         {
-            RuleFor(song => song.SongName).NotEmpty().WithMessage(Messages.MissingCharacter);
-            RuleFor(song => song.OfSinger).MinimumLength(2);
+            RuleFor(song => song.SongName).NotEmpty().WithMessage(Messages.MissingCharacter); 
             RuleFor(song => song.Lyrics).NotEmpty().When(song=>song.KindId == 5);
         }
     }

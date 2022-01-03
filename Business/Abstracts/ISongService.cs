@@ -13,6 +13,6 @@ namespace Business.Abstracts
         IResult Update(Song song);
         IDataResult<Song> GetById(int songId);
         IDataResult<List<SongDetailDto>> AllOfDetail();
-
+        IDataResult<List<Song>> GetBySinger(int singerId);
     }
 }

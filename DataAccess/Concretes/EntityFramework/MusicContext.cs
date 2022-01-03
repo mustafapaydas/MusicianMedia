@@ -26,5 +26,6 @@ namespace DataAccess.Concretes.EntityFramework
         public DbSet<Shop> Shops { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<MusicKind> Kinds { get; set; }
+        public DbSet<Singer> Singers { get; set; }
     }
 }

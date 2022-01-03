@@ -12,6 +12,10 @@ namespace Business.Constants
         public static string Listed = "Listelendi";
         public static string Updated = "Güncellendi";
         public static string Get { get; internal set; }
+        public static string Full { get; internal set; }
+        public static string LimitedExceded { get; internal set; }
+        public static string SongNameAlreadyExists { get; internal set; }
+
         public static string MissingCharacter = "eksik karakter";
         public static string NotEmail = "Hatalı mail adresi";
         public static string NotFoundCapitalLetter = "Şifrenizde büyük karkater olmalı";
