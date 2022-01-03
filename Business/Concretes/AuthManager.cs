@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Business.Abstracts;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
 using Core.Entities.Concretes;
 using Core.Utilities.Hashing;
 using Core.Utilities.Results.Abstracts;
@@ -22,7 +23,7 @@ namespace Business.Concretes
             _userService = userService;
             _tokenHelper= tokenHelper;
         }
-
+       // [ValidationAspect(typeof(UserValidation))]
         public IDataResult<User> Register(UserForRegisterDto userForRegisterDto, string password)
         {
             byte[] passwordSalt, passwordHash;
@@ -73,5 +74,7 @@ namespace Business.Concretes
             var accessToken = _tokenHelper.CreateAccessToken(user, claims.Data);
             return new SuccessDataResult<AccessToken>(accessToken, Messages.TokenCreated);
         }
+
+        
     }
 }

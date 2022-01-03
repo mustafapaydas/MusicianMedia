@@ -10,7 +10,7 @@ namespace Business.ValidationRules.FluentValidation
     {
         public MusicianValidator()
         {
-            RuleFor(musician => musician.InstrumentId).NotEmpty();
+            
         }
     }
 }

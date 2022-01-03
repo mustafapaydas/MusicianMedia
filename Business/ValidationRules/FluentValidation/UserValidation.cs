@@ -21,6 +21,8 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(user => user.Password).Must(InCapitalLetter).WithMessage(Messages.NotFoundCapitalLetter);
         }
 
+        
+
         private bool InCapitalLetter(string arg)
         {
             var regex = new Regex(@"[A-Z]");

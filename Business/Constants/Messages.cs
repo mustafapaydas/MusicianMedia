@@ -12,9 +12,9 @@ namespace Business.Constants
         public static string Listed = "Listelendi";
         public static string Updated = "Güncellendi";
         public static string Get { get; internal set; }
-        public static string MissingCharacter { get; internal set; }
-        public static string NotEmail { get; internal set; }
-        public static string NotFoundCapitalLetter { get; internal set; }
+        public static string MissingCharacter = "eksik karakter";
+        public static string NotEmail = "Hatalı mail adresi";
+        public static string NotFoundCapitalLetter = "Şifrenizde büyük karkater olmalı";
 
         public static string NotFoundUser = "Kullanıcı bulunamadı";
         public static string PasswordError = "Şifre hatalı";

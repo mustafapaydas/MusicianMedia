@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using Business.Abstracts;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+
 using Core.Utilities.Results.Abstracts;
 using Core.Utilities.Results.Concretes.Success;
 using DataAccess.Abstracts;
@@ -20,7 +22,7 @@ namespace Business.Concretes
         {
             _musicianDal = musicianDal;
         }
-
+        //[ValidationAspect(typeof(MusicianValidator))]
         public IResult Add(Musician musician)
         {
             _musicianDal.Add(musician);

@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using Business.Abstracts;
 using Business.Constants;
-using Business.ValidationRules.FluentValidation;
-using Core.Aspects.Autofac;
-using Core.CrossCoutingConcerns.Validation.FluentValidation;
+
+
 using Core.Entities.Concretes;
 using Core.Utilities.Results.Abstracts;
 using Core.Utilities.Results.Concretes.Success;
@@ -27,7 +26,7 @@ namespace Business.Concretes
             return new SuccessDataResult<List<OperationClaim>>(_userDal.GetClaims(user),Messages.Listed);
         }
 
-       [ValidationAspect(typeof(UserValidation))]
+       
         public IResult Add(User user)
         {
            
