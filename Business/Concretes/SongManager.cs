@@ -23,9 +23,10 @@ namespace Business.Concretes
         private ISongDal _songDal;
         private ISingerService _singerService;
 
-        public SongManager(ISongDal songDal)
+        public SongManager(ISongDal songDal,ISingerService singerService)
         {
             _songDal = songDal;
+            _singerService = singerService;
         }
 
         public IDataResult<List<Song>> GetAll()
@@ -36,7 +37,7 @@ namespace Business.Concretes
         public IResult Add(Song song)
         {
             IResult result=BusinessRules.Run(CheckIfSongCountOfKindCorrect(song.KindId),
-                CheckIfSingerSongNameAlreadyExists(song));
+                CheckIfSingerSongNameAlreadyExists(song),CheckIfSingerExists(song));
             if (result!=null)
             {
                 return result;
@@ -54,7 +55,8 @@ namespace Business.Concretes
         [ValidationAspect(typeof(SongValidator))]
         public IResult Update(Song song)
         {
-            IResult result=BusinessRules.Run(CheckIfSongCountOfKindCorrect(song.KindId), CheckIfSingerSongNameAlreadyExists(song));
+            IResult result=BusinessRules.Run(CheckIfSongCountOfKindCorrect(song.KindId), 
+                CheckIfSingerSongNameAlreadyExists(song),CheckIfSingerExists(song));
             if (result != null)
             {
                 return result;
@@ -110,6 +112,17 @@ namespace Business.Concretes
                 {
                     return new ErrorResult(Messages.SongNameAlreadyExists);
                 }
+            }
+
+            return new SuccessResult();
+        }
+
+        private IResult CheckIfSingerExists(Song song)
+        {
+            var check = _singerService.GetById(song.SingerId);
+            if (check==null)
+            {
+                return new ErrorResult(Messages.NotFoundSinger);
             }
 
             return new SuccessResult();

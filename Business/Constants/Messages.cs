@@ -15,6 +15,7 @@ namespace Business.Constants
         public static string Full { get; internal set; }
         public static string LimitedExceded { get; internal set; }
         public static string SongNameAlreadyExists { get; internal set; }
+        public static string NotFoundSinger { get; internal set; }
 
         public static string MissingCharacter = "eksik karakter";
         public static string NotEmail = "Hatalı mail adresi";
