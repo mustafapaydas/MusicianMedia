@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using Business.Abstracts;
+using Business.Constants;
 using Core.Utilities.Results.Abstracts;
+using Core.Utilities.Results.Concretes.Success;
 using DataAccess.Abstracts;
 using Entities.Concretes;
 
@@ -19,27 +21,30 @@ namespace Business.Concretes
 
         public IDataResult<List<Singer>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Singer>>(_singerDal.GetAll());
         }
 
         public IResult Add(Singer singer)
         {
-            throw new NotImplementedException();
+            _singerDal.Add(singer);
+            return new SuccessResult(Messages.Added);
         }
 
         public IResult Delete(Singer singer)
         {
-            throw new NotImplementedException();
+            _singerDal.Delete(singer);
+            return new SuccessResult(Messages.Deleted);
         }
 
         public IResult Update(Singer singer)
         {
-            throw new NotImplementedException();
+            _singerDal.Update(singer);
+            return new SuccessResult(Messages.Updated);
         }
 
         public IDataResult<Singer> GetById(int singerId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Singer>(_singerDal.Get(singer => singer.SingerId == singerId));
         }
     }
 }

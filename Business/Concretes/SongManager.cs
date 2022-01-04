@@ -91,8 +91,9 @@ namespace Business.Concretes
 
         private IResult CheckIfSingerAndSongLimitExceded(Song song)
         {
-            var count = _singerService.GetAll().Data.Count;
-            if (count>=50)
+            var songsCountOfSinger = _songDal.GetAll(sing => sing.SingerId == song.SingerId).Count;
+            
+            if (songsCountOfSinger >=20)
             {
                 return new ErrorResult(Messages.LimitedExceded);
             }
