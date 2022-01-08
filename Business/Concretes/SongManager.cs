@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using Business.Abstracts;
+using Business.Aspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -34,6 +34,7 @@ namespace Business.Concretes
             return new SuccessDataResult<List<Song>>(_songDal.GetAll());
         }
         [ValidationAspect(typeof(SongValidator))]
+        [SecuredOperation("admin,musician,group")]
         public IResult Add(Song song)
         {
             IResult result=BusinessRules.Run(CheckIfSongCountOfKindCorrect(song.KindId),
@@ -45,7 +46,7 @@ namespace Business.Concretes
             _songDal.Add(song);
             return new SuccessResult(Messages.Added);
         }
-
+        [SecuredOperation("admin,musician,group")]
         public IResult Delete(Song song)
         {
             _songDal.Delete(song);
@@ -53,6 +54,7 @@ namespace Business.Concretes
         }
 
         [ValidationAspect(typeof(SongValidator))]
+        [SecuredOperation("admin,musician,group")]
         public IResult Update(Song song)
         {
             IResult result=BusinessRules.Run(CheckIfSongCountOfKindCorrect(song.KindId), 
@@ -64,21 +66,24 @@ namespace Business.Concretes
             _songDal.Update(song);
             return new SuccessResult(Messages.Updated);
         }
-
+        
         public IDataResult<Song> GetById(int songId)
         {
             return new SuccessDataResult<Song>(_songDal.Get(song => song.SongId == songId));
         }
 
-        public IDataResult<List<SongDetailDto>> AllOfDetail()
+        /*public IDataResult<List<SongDetailDto>> AllOfDetail()
         {
             return new SuccessDataResult<List<SongDetailDto>>(_songDal.GetSongDetails());
         }
-
+        */
         public IDataResult<List<Song>> GetBySinger(int singerId)
         {
             return new SuccessDataResult<List<Song>>(_songDal.GetAll(song => song.SingerId == singerId));
         }
+
+       
+
 
         private IResult CheckIfSongCountOfKindCorrect(int kindId)
         {

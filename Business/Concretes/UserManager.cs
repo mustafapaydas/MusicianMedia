@@ -10,7 +10,7 @@ using DataAccess.Abstracts;
 
 namespace Business.Concretes
 {
-    public class UserManager:IUserService
+    public class UserManager : IUserService
     {
         private IUserDal _userDal;
 
@@ -21,13 +21,13 @@ namespace Business.Concretes
 
         public IDataResult<List<OperationClaim>> GetClaims(User user)
         {
-            return new SuccessDataResult<List<OperationClaim>>(_userDal.GetClaims(user),Messages.Listed);
+            return new SuccessDataResult<List<OperationClaim>>(_userDal.GetClaims(user), Messages.Listed);
         }
 
-       
+
         public IResult Add(User user)
         {
-           
+
             _userDal.Add(user);
             return new SuccessResult(Messages.Added);
         }

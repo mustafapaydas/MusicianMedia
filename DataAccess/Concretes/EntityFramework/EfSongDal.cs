@@ -9,7 +9,7 @@ namespace DataAccess.Concretes.EntityFramework
 {
     public class EfSongDal : EfEntityRepositoryBase<Song, MusicContext>, ISongDal
     {
-        public List<SongDetailDto> GetSongDetails()
+        /*public List<SongDetailDto> GetSongDetails()
         {
             using (var context=new MusicContext())
             {
@@ -26,6 +26,6 @@ namespace DataAccess.Concretes.EntityFramework
                     };
                 return result.ToList();
             }
-        }
+        }*/
     }
 }

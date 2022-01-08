@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Business.Abstracts;
+using Business.Aspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -27,6 +28,7 @@ namespace Business.Concretes
         }
 
         [ValidationAspect(typeof(InstrumentValidator))]
+        [SecuredOperation("admin")]
         public IResult Add(Instrument instrument)
         {
            

@@ -17,7 +17,7 @@ namespace WebApi.Controllers
             _songService = _songService;
         }
 
-        [HttpGet("getall")]
+       /* [HttpGet("getall")]
         public IActionResult GetAll()
         {
             var result = _songService.AllOfDetail();
@@ -27,7 +27,7 @@ namespace WebApi.Controllers
             }
 
             return BadRequest(result);
-        }
+        }*/
 
         [HttpGet("get")]
         public IActionResult Get(int songId)

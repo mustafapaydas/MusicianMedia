@@ -1,6 +1,7 @@
 ﻿using Core.Entities.Concretes;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Constants
@@ -16,14 +17,15 @@ namespace Business.Constants
         public static string LimitedExceded { get; internal set; }
         public static string SongNameAlreadyExists { get; internal set; }
         public static string NotFoundSinger { get; internal set; }
+        public static string AuthorizationDenied = "Yetkiniz Yok";
 
         public static string MissingCharacter = "eksik karakter";
         public static string NotEmail = "Hatalı mail adresi";
         public static string NotFoundCapitalLetter = "Şifrenizde büyük karkater olmalı";
 
-        public static string NotFoundUser = "Kullanıcı bulunamadı";
+        public static string UserNotFound = "Kullanıcı bulunamadı";
         public static string PasswordError = "Şifre hatalı";
-        public static string SuccessLogin = "Giriş Başarılı";
+        public static string SuccessfulLogin = "Giriş Başarılı";
         public static string UserAlreadyExists = "Bu email daha önce alınmış";
         public static string UserRegistered = "Kayıt Başarılı";
         public static string TokenCreated = "Token oluşturuldu";

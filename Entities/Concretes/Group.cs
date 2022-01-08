@@ -8,6 +8,7 @@ namespace Entities.Concretes
     public class Group:IEntity
     {
         public int GroupId { get; set; }
+        public int UserId { get; set; }
         public string GroupName { get; set; }
         public string Soloist { get; set; }
     }

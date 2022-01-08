@@ -4,7 +4,7 @@ using System.Text;
 using Business.Abstracts;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
-
+using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results.Abstracts;
 using Core.Utilities.Results.Concretes.Success;
 using DataAccess.Abstracts;
