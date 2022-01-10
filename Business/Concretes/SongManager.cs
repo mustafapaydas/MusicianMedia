@@ -6,6 +6,7 @@ using Business.Abstracts;
 using Business.Aspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Results.Abstracts;
@@ -29,12 +30,15 @@ namespace Business.Concretes
             _singerService = singerService;
         }
 
+        [CacheAspect]
         public IDataResult<List<Song>> GetAll()
         {
             return new SuccessDataResult<List<Song>>(_songDal.GetAll());
         }
+       
         [ValidationAspect(typeof(SongValidator))]
         [SecuredOperation("admin,musician,group")]
+        [CacheRemoveAspect("ISongService.Get")]
         public IResult Add(Song song)
         {
             IResult result=BusinessRules.Run(CheckIfSongCountOfKindCorrect(song.KindId),
@@ -46,7 +50,9 @@ namespace Business.Concretes
             _songDal.Add(song);
             return new SuccessResult(Messages.Added);
         }
+
         [SecuredOperation("admin,musician,group")]
+        [CacheRemoveAspect("ISongService.Get")]
         public IResult Delete(Song song)
         {
             _songDal.Delete(song);
@@ -54,7 +60,8 @@ namespace Business.Concretes
         }
 
         [ValidationAspect(typeof(SongValidator))]
-        [SecuredOperation("admin,musician,group")]
+        [SecuredOperation(("admin,musician,group"),Priority = 1)]
+        [CacheRemoveAspect("ISongService.Get")]
         public IResult Update(Song song)
         {
             IResult result=BusinessRules.Run(CheckIfSongCountOfKindCorrect(song.KindId), 
@@ -66,23 +73,28 @@ namespace Business.Concretes
             _songDal.Update(song);
             return new SuccessResult(Messages.Updated);
         }
-        
+
+        [CacheAspect]
         public IDataResult<Song> GetById(int songId)
         {
             return new SuccessDataResult<Song>(_songDal.Get(song => song.SongId == songId));
         }
 
-        /*public IDataResult<List<SongDetailDto>> AllOfDetail()
+        public IDataResult<List<SongDetailDto>> AllOfDetail()
         {
             return new SuccessDataResult<List<SongDetailDto>>(_songDal.GetSongDetails());
         }
-        */
+        
+        [CacheAspect]
         public IDataResult<List<Song>> GetBySinger(int singerId)
         {
             return new SuccessDataResult<List<Song>>(_songDal.GetAll(song => song.SingerId == singerId));
         }
 
-       
+        public IDataResult<List<Song>> GetByKind(int kindId)
+        {
+            return new SuccessDataResult<List<Song>>(_songDal.GetAll(song => song.KindId == kindId));
+        }
 
 
         private IResult CheckIfSongCountOfKindCorrect(int kindId)

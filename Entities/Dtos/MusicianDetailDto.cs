@@ -11,7 +11,7 @@ namespace Entities.Dtos
         public string LastName { get; set; }
         public string Email { get; set; }
         public string WorkFor { get; set; }
-        public string InstrumentName { get; set; }
+        public string Instrument { get; set; }
 
     }
 }

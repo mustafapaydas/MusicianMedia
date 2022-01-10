@@ -7,6 +7,6 @@ namespace DataAccess.Abstracts
 {
     public interface ISongDal : IEntityRepositoryBase<Song>
     {
-        //List<SongDetailDto> GetSongDetails();
+        List<SongDetailDto> GetSongDetails();
     }
 }

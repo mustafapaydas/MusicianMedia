@@ -7,7 +7,7 @@ using Entities.Concretes;
 
 namespace DataAccess.Concretes.EntityFramework
 {
-    public class ShopDal:EfEntityRepositoryBase<Shop,MusicContext>,IShopDal
+    public class EfShopDal:EfEntityRepositoryBase<Shop,MusicContext>,IShopDal
     {
     }
 }

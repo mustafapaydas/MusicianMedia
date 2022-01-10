@@ -12,7 +12,8 @@ namespace Business.Abstracts
         IResult Delete(Song song);
         IResult Update(Song song);
         IDataResult<Song> GetById(int songId);
-       // IDataResult<List<SongDetailDto>> AllOfDetail();
+        IDataResult<List<SongDetailDto>> AllOfDetail();
         IDataResult<List<Song>> GetBySinger(int singerId);
+        IDataResult<List<Song>> GetByKind(int kindId);
     }
 }

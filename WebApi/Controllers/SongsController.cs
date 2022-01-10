@@ -14,25 +14,38 @@ namespace WebApi.Controllers
 
         public SongsController(ISongService songService)
         {
-            _songService = _songService;
+            _songService = songService;
         }
 
-       /* [HttpGet("getall")]
+        [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _songService.AllOfDetail();
+            var result = _songService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
             }
 
             return BadRequest(result);
-        }*/
+        }
 
         [HttpGet("get")]
         public IActionResult Get(int songId)
         {
             var result = _songService.GetById(songId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
+
+        [HttpGet("getdetail")]
+        public IActionResult GetDetail()
+        {
+            var result = _songService.AllOfDetail();
             if (result.Success)
             {
                 return Ok(result);
